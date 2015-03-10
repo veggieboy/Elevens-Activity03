@@ -43,28 +43,49 @@ public class Shuffler {
 	}
 
 
-	/**
-	 * Apply a "perfect shuffle" to the argument.
-	 * The perfect shuffle algorithm splits the deck in half, then interleaves
-	 * the cards in one half with the cards in the other.
-	 * @param values is an array of integers simulating cards to be shuffled.
-	 */
-	public static void perfectShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
-	}
+/**
+  * Apply a "perfect shuffle" to the argument.
+  * The perfect shuffle algorithm splits the deck in half, then interleaves
+  * the cards in one half with the cards in the other.
+  * @param values is an array of integers simulating cards to be shuffled.
+  */
+ public static void perfectShuffle(int[] values) 
+ {
+   int [] shuffled = new int [52];
+   int k=0;
+   for (int j=0; j<=(values.length)/2; j++)
+   {
+     shuffled[k]=values[j];
+     k=k+2;
+   }
+   k=1;
+   for(int j=values.length/2+1; j<values.length; j++)
+   {
+     shuffled[k]=values[j];
+     k=k+2;
+   }
+ }
 
-	/**
-	 * Apply an "efficient selection shuffle" to the argument.
-	 * The selection shuffle algorithm conceptually maintains two sequences
-	 * of cards: the selected cards (initially empty) and the not-yet-selected
-	 * cards (initially the entire deck). It repeatedly does the following until
-	 * all cards have been selected: randomly remove a card from those not yet
-	 * selected and add it to the selected cards.
-	 * An efficient version of this algorithm makes use of arrays to avoid
-	 * searching for an as-yet-unselected card.
-	 * @param values is an array of integers simulating cards to be shuffled.
-	 */
-	public static void selectionShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
-	}
+ /**
+  * Apply an "efficient selection shuffle" to the argument.
+  * The selection shuffle algorithm conceptually maintains two sequences
+  * of cards: the selected cards (initially empty) and the not-yet-selected
+  * cards (initially the entire deck). It repeatedly does the following until
+  * all cards have been selected: randomly remove a card from those not yet
+  * selected and add it to the selected cards.
+  * An efficient version of this algorithm makes use of arrays to avoid
+  * searching for an as-yet-unselected card.
+  * @param values is an array of integers simulating cards to be shuffled.
+  */
+ public static void selectionShuffle(int[] values) 
+ {
+  Random random=new Random();
+  int [] shuffled = new int [52];
+  for(int k=0; k<51; k++)
+  {
+    int j = random.nextInt(values.length); 
+    shuffled[k]=values[j];
+    values[j]=0;
+  }
+ }
 }
